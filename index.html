@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reliable Scales And Services</title>
+
+    <!-- Include Bootstrap CSS if not already included -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- Include Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    :root {
+        --primary-color: #4bc1f8;
+        --secondary-color: #ffffffe4;
+        --text-color: #080808;
+        --shadow-color: rgba(0, 0, 0, 0.396);
+        --highlight-color: rgba(238, 113, 3, 1);
+    }
+
+    body {
+        background-color: #03adfc8d !important;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .shop-container {
+        text-align: center;
+        background-color: var(--primary-color + "7b");
+        padding: 20px;
+        margin: 0;
+        color: rgb(255, 85, 0);
+        border-radius: 20px;
+        box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    .shop-container h1 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bold;
+        text-shadow: 3px 3px 6px white;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .container {
+        max-width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .left-sidebar,
+    .main-content,
+    .right-sidebar {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .left-sidebar,
+    .right-sidebar {
+        flex-basis: 20%;
+        background-color: var(--primary-color + "7a");
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    .right-sidebar {
+        color: rgb(255, 85, 0);
+        text-shadow: 3px 3px 4px rgb(252, 254, 253);
+        text-align: center;
+    }
+
+    .emblem {
+        width: 50%;
+        height: 50px;
+        max-width: 100%;
+    }
+
+    .main-content {
+        flex-basis: 60%;
+        color: #fafaf7;
+        text-align: center;
+        text-shadow: 2px 2px 4px var(--highlight-color + "4");
+    }
+
+    .main-content h1 {
+        text-shadow: 2px 2px 4px var(--highlight-color);
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .album-container {
+        background-color: #03adfc17;
+        color: var(--text-color);
+        text-shadow: 2px 2px 4px rgba(160, 238, 3, 0.1);
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 5px;
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 20px;
+    }
+
+    .album-cover {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px var(--shadow-color);
+    }
+
+    .album-cover img {
+        width: 100%;
+        height: 125px;
+        max-width: 100%;
+    }
+
+    .modal-content {
+        width: 400px;
+        max-width: 100%;
+    }
+
+    #contactModal .modal-content {
+        width: 350px;
+        height: 400px;
+        border-radius: 15px;
+
+    }
+
+    #orderModal .modal-content {
+        width: 350px;
+        height: 700px;
+        border-radius: 15px;
+
+    }
+
+    .modal-header {
+
+        background-color: #4bc1f8;
+        color: #f2f2f2;
+        text-shadow: 2px 2px 4px rgba(8, 8, 8, 0.899);
+    }
+
+    .modal-body {
+
+        background-color: #f4f9fc;
+        color: #4bc1f8;
+    }
+
+    .modal-footer {
+
+        background-color: #4bc1f8;
+        color: #f2f2f2;
+        text-shadow: 2px 2px 4px rgba(8, 8, 8, 0.899);
+    }
+
+    .custom-form-group {
+        margin-bottom: 7px;
+        /* Adjust the value as needed */
+    }
+
+    .custom-form-group label {
+        margin-bottom: 1px;
+        /* Adjust the value as needed */
+    }
+
+    /* Style for the container of the scrolling panel */
+    .scrolling-panel {
+        width: 100%;
+        /* Adjust the width as needed */
+        overflow: hidden;
+        margin-top: 20px;
+
+        /* Add margin as needed */
+    }
+
+    /* Style for the inner container that will be animated */
+    .scrolling-content {
+        white-space: nowrap;
+        display: inline-block;
+        animation: scroll 20s linear infinite;
+        /* Adjust the animation duration as needed */
+    }
+
+    /* Style for the images within the scrolling panel */
+    .scrolling-content img {
+        width: 100px;
+        /* Adjust the width of each image */
+        height: 100px;
+        /* Maintain the aspect ratio */
+        margin-right: 0px;
+        /* Add spacing between images */
+        border-radius: 30px
+    }
+
+    /* Duplicate the images for seamless scrolling */
+    .scrolling-content img:nth-child(n+5) {
+        display: inline-block;
+    }
+
+    /* Keyframe animation for scrolling */
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+            /* Adjust the percentage based on the number of images */
+        }
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+        height: 100%;
+        width: 100%;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .text {
+            font-size: 11px
+        }
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    img {
+        vertical-align: middle;
+        object-fit: cover;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+        max-width: 800px;
+        max-height: 400px;
+        /* Set your desired height */
+        position: relative;
+        margin: auto;
+        overflow: hidden;
+
+    }
+
+    /* Caption text */
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active {
+        background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+        animation-name: fade;
+        animation-duration: 2.5s;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+        .text {
+            font-size: 11px
+        }
+    }
+
+    #grad1 {
+
+
+        background-color: #03adfc8d;
+        /* For browsers that do not support gradients */
+        background-image: conic-gradient(#03adfc8d, rgba(255, 149, 0, 0.673), #03fc39a2);
+    }
+</style>
+
+<body>
+    <!--    <div id="grad1"> -->
+    <div class="container-fluid">
+        <div class="row min-vh-100 flex-column flex-md-row">
+            <aside class="col-12 col-md-2 p-0 bg-dark flex-shrink-1">
+                <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+                    <div class="collapse navbar-collapse ">
+                        <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                            <!--     <li class="nav-item">
+                                <a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-bullseye fa-fw"></i> <span
+                                        class="font-weight-bold"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="#"><i class="fa fa-book fa-fw"></i> <span
+                                        class="d-none d-md-inline">item</span></a>
+                            </li>
+                        -->
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 nav-link-contact" href="#" data-toggle="modal"
+                                    data-target="#contactModal">
+                                    <i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Contact</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0 order-link" href="YourOrder.html">
+                                    <i class="fa fa-heart codeply fa-fw"></i> <span
+                                        class="d-none d-md-inline">Order</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="#" data-toggle="modal" data-target="#aboutModal"><i
+                                        class="fa fa-star codeply fa-fw"></i> <span
+                                        class="d-none d-md-inline">About</span></a>
+                                <!----        </li>
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="#"><i class="fa fa-star fa-fw"></i> <span
+                                        class="d-none d-md-inline">Link</span></a>
+                            </li>
+                        -->
+                        </ul>
+                    </div>
+                </nav>
+            </aside>
+
+
+
+            <main class="col bg-faded py-3 flex-grow-1">
+
+
+
+                <div class="shop-container">
+                    <h1>RELIABLE SCALES & SERVICES</h1>
+                </div>
+
+
+                <!-- Scrolling Panel Here -->
+                <div class="scrolling-panel">
+                    <div class="scrolling-content">
+                        <img src="album01.jpg" alt="Album 1 Icon " data-toggle="modal" data-target="#photoModal">
+                        <img src="image03.jpg" alt="image03 " data-toggle="modal" data-target="#image03Modal">
+                        <img src="scale01.jpg" alt="scale01" data-toggle="modal" data-target="#scale01Modal">
+                        <img src="scale02.jpg" alt="image03" data-toggle="modal" data-target="#scale02Modal">
+                        <img src="image04.jpg" alt="image04" data-toggle="modal" data-target="#image04Modal">
+                        <img src="image05.jpeg" alt="image05" data-toggle="modal" data-target="#image05Modal">
+
+                        <img src="image03.jpg" alt="image03 " data-toggle="modal" data-target="#image03Modal">
+                        <img src="scale01.jpg" alt="scale01" data-toggle="modal" data-target="#scale01Modal">
+                        <img src="scale02.jpg" alt="image03" data-toggle="modal" data-target="#scale02Modal">
+                        <img src="image04.jpg" alt="image04" data-toggle="modal" data-target="#image04Modal">
+                        <img src="image05.jpeg" alt="image05" data-toggle="modal" data-target="#image05Modal">
+
+
+                        <!-- Add more images as needed -->
+                    </div>
+                </div>
+
+
+                <div class="container">
+
+                    <div class="main-content">
+
+                        <div class="slideshow-container">
+
+                            <div class="mySlides fade">
+                                <div class="numbertext">1 / 3</div>
+                                <img src="image01.jpg">
+
+                            </div>
+
+                            <div class="mySlides fade">
+                                <div class="numbertext">2 / 3</div>
+                                <img src="image02.jpg">
+
+                            </div>
+
+                            <div class="mySlides fade">
+                                <div class="numbertext">3 / 3</div>
+                                <img src="image01.jpg">
+
+                            </div>
+
+                        </div>
+                        <br>
+
+                        <div style="text-align:center">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+
+                    </div>
+                    <div class="right-sidebar" id="grade1">
+                        <h3>OFFER ZONE</h3>
+
+                        <div class="album-container">
+                            <div class="album-cover" data-toggle="modal" data-target="#photoModal">
+                                <img src="album01.jpg" alt="Album 1 Icon">
+                                <p>photo</p>
+                            </div>
+
+                            <div class="album-cover" data-toggle="modal" data-target="#scale01Modal">
+                                <img src="scale01.jpg" alt="scale01/-" style="width:100%">
+                                <p>1200/-</p>
+                            </div>
+
+                            <div class="album-cover" data-toggle="modal" data-target="#scale02Modal">
+                                <img src="scale02.jpg" alt="scale02" style="width:100%">
+                                <p>1500/-</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+        </div>
+
+
+
+        <!-- Modals for Enlarged Images -->
+        <div class="modal" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="album01.jpg" alt="Album 1">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="scale01Modal" tabindex="-1" role="dialog" aria-labelledby="scale01ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="scale01.jpg" alt="Scale 01">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="image03Modal" tabindex="-1" role="dialog" aria-labelledby="image03ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="image03.jpg" alt="image03">
+                        <p>Eagle Electronic Weighing & Counting Scale with 30 kg</p>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="image04Modal" tabindex="-1" role="dialog" aria-labelledby="image04ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="image04.jpg" alt="image04">
+                        <p>Honda Electronic weighing scale capacity 50kg</p>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="image05Modal" tabindex="-1" role="dialog" aria-labelledby="image05ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="image05.jpeg" alt="image05">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </main>
+    </div>
+    </div>
+    <!-- Bootstrap Modal for Contact -->
+
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Contact Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add the address or contact information here -->
+                    <p>RELIABLE SERVICES & SALES </p>
+                    <p>Door.No.XV/1238 Nazreth,Kochi-2</p>
+                </div>
+                <div class="modal-footer">
+                    <p>Email :joyalmani@gmail.com </p>
+                    <p>mobile:9061127058 & 9846554842</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Modal for About -->
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">About Us</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        We are one of the oldest business families in Kochi-2 with a family legacy of over a century in
+                        business, starting from as early as 1970. Started for the noble cause of nation-building and
+                        self-sustenance in a pre-independent India, the forefathers believed ethical, honest and
+                        transparent business practices should form the foundation of the group.
+                    </p>
+
+                </div>
+                <div class="modal-footer">
+                    <p>Email :joyalmani@gmail.com </p>
+                    <p>mobile:9061127058 & 9846554842</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+
+    </div>
+</body>
+
+</html>

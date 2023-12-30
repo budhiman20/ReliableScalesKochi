@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ </head>
+<style>
+   .head
+    {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bold;
+        text-shadow: 3px 3px 6px white;
+        text-align: center;
+        height: 50px;
+        width:25%;
+        padding-top: 25px;
+        padding-left: 10px;
+    }
+  #form {
+    background-color: #84c8f3a9 !important;
+    /* Set the background color of the form */
+    color: rgb(255, 85, 0);
+    ;
+    /* Set the text color of the form */
+    border-radius: 10px;
+    /* Set the border-radius for rounded corners */
+    padding: 1px;
+    /* Add some padding for better appearance */
+    width: 25%;
+
+  }
+
+  #grad1 {
+
+    background-image: linear-gradient(to right, rgb(152, 173, 214), rgba(0, 200, 255, 0.692), rgb(42, 108, 239));
+  }
+
+  .input {
+    /* You can customize the input field styles here */
+    border: 1px solid #cccccc;
+    /* Set the border color */
+    border-radius: 20px;
+    /* Set the border-radius for rounded input corners */
+    padding: 1px;
+    /* Add padding to the input field */
+    margin-bottom: 1px;
+    /* Add some space between input fields */
+    text-align :center;
+  }
+
+.textarea {
+    height: 25px;
+    /* You can customize the textarea styles here */
+    border: 1px solid #ef1313;
+    /* Set the border color */
+    border-radius: 5px;
+    /* Set the border-radius for rounded textarea corners */
+    padding: 1px;
+    /* Add padding to the textarea */
+    margin-bottom: 2px;
+    /* Add some space between input fields */
+  }
+
+
+  /* Add more styles for radio buttons, checkboxes, buttons, etc. as needed */
+
+  /* Optional: Add styles for buttons */
+  .button {
+    background-color: rgb(6, 30, 241);
+    color: #cccccc;
+    margin-right: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: #ddef13;
+  }
+
+  .left-sidebar {
+    width: 30%;
+    /* Adjust the width as needed */
+  }
+
+ 
+  .field {
+    margin-bottom: 5px;
+    
+  }
+
+  #message {
+    display: none;
+    margin: 20px;
+    font-weight: bold;
+    color: rgb(15, 225, 99);
+    padding: 8px;
+    background-color: beige;
+    border-radius: 4px;
+    border-color: aquamarine;
+  }
+</style>
+
+<body>
+  <div id="grad1">
+    
+        <div class="head">
+          <h1 >RELIABLE SCALES & SERVICES</h1>
+        </div>
+      
+    <div id="message" style="
+    display: none;
+    margin: 20px;
+    font-weight: bold;
+    color: green;
+    padding: 8px;
+    background-color: beige;
+    border-radius: 4px;
+    border-color: aquamarine;
+  "></div>
+
+<form id="form" class="container m-4 pl-4" method="POST">
+      <div class="field">
+        <label class="label"  >Name :</label>
+        
+          <input class="input" type="text" id="Name" placeholder="Your Sweet Name" name="Name" required />
+        
+      </div>
+      <div class="field">
+        <label class="label" for="ItemCode">Item Code</label>
+         
+            <input class="input" type="text" id="ItemCode" placeholder="item01" name="ItemCode" required />
+      
+    </div>
+
+    <div class="field">
+        <label class="label">Quantity</label>
+        
+            <input class="input" type="number" id="Quantity" placeholder="Quantity" name="Quantity" required />
+        
+    </div>
+
+     
+
+      <div class="field">
+        <label class="label">Contact Number</label>
+          <input class="input" type="number" id="Contact number" placeholder="mobile Number" name="Contact Number" required />
+      
+      </div>
+
+      <div class="field">
+        <label class="label">Place</label>
+        
+          <input class="input" type="text" id="Place" placeholder="place" name="Place" required/>
+      
+      </div>
+
+      <div class="field">
+        <label class="label">Panchayath</label>
+        
+          <input class="input" type="text" id="Panchayath" placeholder="Your Panchayath" name="Panchayath" required />
+      
+      </div>
+     
+
+      <div class="field">
+        <label class="label">Agree to Terms</label>
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" name="Agree To Terms" value="yes" /> I agree
+            to the terms and conditions
+          </label>
+        </div>
+      </div>
+
+    
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button" type="submit" id="submit-button">
+            Mail
+          </button>
+        </div>
+        
+        <div class="control">
+          <button class="button" type="button" onclick="sendWhatsAppMessage()" > Whatsapp</button>
+      </div>
+
+      </div>
+    </form>
+    
+
+    <script>
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+          keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+        var formDataString = keyValuePairs.join("&");
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwPS3fX49B_GU2E92nFfY9sFLgeTB0omHhAwaUqRJlgmhfUvYzkvKHrBl6SgnNNsek/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(function (data) {
+            // Display a success message
+            document.getElementById("message").textContent = "Order submitted successfully!";
+
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+    </script>
+  
+<!--   Script for order send via whatsapp -->
+  <script>
+      function sendWhatsAppMessage() {
+          // Assuming you have a WhatsApp API endpoint
+          const apiUrl = 'https://api.whatsapp.com/send';
+          const phoneNumber = "7012092620"; // replace with the desired phone number
+
+
+          // Get phone number and message from the form
+          const Name = document.getElementById('Name').value;
+          const ItemCode = document.getElementById('ItemCode').value;
+          const Quantity = document.getElementById('Quantity').value;
+          const Place = document.getElementById('Place').value;
+          const Panchayath = document.getElementById('Panchayath').value;
+
+          // Construct the WhatsApp link
+          const whatsappLink = `${apiUrl}?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent('Name :' + Name +
+           '\n Item Code: ' + ItemCode + '\n Quantity : ' + Quantity  + '\n Place : ' + Place  + '\n Panchayath : ' + Panchayath  )}`;
+
+
+          // Open the WhatsApp link
+          window.open(whatsappLink, '_blank');
+      }
+  </script>
+
+
+
+  </div>
+</body>
+
+</html>
