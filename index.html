@@ -18,6 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <style>
@@ -30,28 +31,33 @@
     }
 
     body {
-        background-color: #03adfc8d !important;
-        margin: 0;
-        font-family: Arial, sans-serif;
-    }
+    background-color: #03adfc8d !important;
+    margin: 0;
+    font-family: Arial, sans-serif;
+transition-duration: 20s;
+}
+
+body:hover {
+    background-color: #b7f7da91 !important;
+}
 
     .shop-container {
         text-align: center;
-        background-color: var(--primary-color + "7b");
+        background-color: var(--primary-color);
         padding: 20px;
         margin: 0;
-        color: rgb(255, 85, 0);
+        color: #fff;
         border-radius: 20px;
         box-shadow: 0 4px 8px var(--shadow-color);
     }
 
     .shop-container h1 {
-        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-family: 'Lobster', cursive;
+        /* Added Lobster font */
         font-weight: bold;
-        text-shadow: 3px 3px 6px white;
+        text-shadow: 3px 3px 6px rgb(8, 238, 88);
         text-align: center;
         max-width: 80%;
-    
     }
 
     .container {
@@ -70,13 +76,12 @@
 
     .left-sidebar,
     .right-sidebar {
-        flex-basis: 20%;
+        flex-basis: 40%;
         background-color: var(--primary-color + "7a");
         padding: 10px;
-        box-sizing: border-box;
         border-radius: 20px;
-        box-shadow: 0 4px 8px var(--shadow-color);
-        
+        box-shadow: 0 4px 6px var(--shadow-color);
+
     }
 
     .right-sidebar {
@@ -96,12 +101,15 @@
         color: #fafaf7;
         text-align: center;
         text-shadow: 2px 2px 4px var(--highlight-color + "4");
+        box-shadow:4px 2px 2px 2px rgb(8, 238, 88);
+        border-radius: 15px;
     }
 
     .main-content h1 {
         text-shadow: 2px 2px 4px var(--highlight-color);
         text-align: center;
         margin-top: 50px;
+        
     }
 
     .album-container {
@@ -113,7 +121,7 @@
         grid-template-rows: repeat(3, 1fr);
         gap: 5px;
         padding: 20px;
-       
+
         margin: 0 auto;
         border-radius: 20px;
     }
@@ -123,12 +131,13 @@
         padding: 20px;
         text-align: center;
         border-radius: 15px;
-        box-shadow: 0 4px 8px var(--shadow-color);
+        box-shadow:2px 2px 4px 2px #0808089d;
+      
     }
 
     .album-cover img {
         width: 100%;
-        height: 125px;
+        height: 200px;
         max-width: 100%;
     }
 
@@ -258,6 +267,7 @@
 
     img {
         vertical-align: middle;
+        
         object-fit: cover;
     }
 
@@ -310,7 +320,7 @@
     /* Fading animation */
     .fade {
         animation-name: fade;
-        animation-duration: 2.5s;
+        animation-duration: 3.5s;
     }
 
     @keyframes fade {
@@ -452,26 +462,28 @@
 
                     </div>
                     <div class="right-sidebar" id="grade1">
-                        <h3>OFFER ZONE</h3>
+                        <h3>
 
-                        <div class="album-container">
-                            <div class="album-cover" data-toggle="modal" data-target="#photoModal">
-                                <img src="album01.jpg" alt="Album 1 Icon">
-                                <p></p>
-                            </div>
-
-                            <div class="album-cover" data-toggle="modal" data-target="#scale01Modal">
-                                <img src="scale01.jpg" alt="scale01/-" style="width:100%">
-                                <p></p>
-                            </div>
-
-                            <div class="album-cover" data-toggle="modal" data-target="#scale02Modal">
-                                <img src="scale02.jpg" alt="scale02" style="width:100%">
-                                <p></p>
-                            </div>
+                        </h3>
 
 
+                        <div class="album-cover" data-toggle="modal" data-target="#photoModal">
+                            <img src="album01.jpg" alt="Album 1 Icon">
+                            <p></p>
                         </div>
+
+                        <div class="album-cover" data-toggle="modal" data-target="#scale01Modal">
+                            <img src="scale01.jpg" alt="scale01/-" style="width:100%">
+                            <p></p>
+                        </div>
+
+                        <div class="album-cover" data-toggle="modal" data-target="#scale02Modal">
+                            <img src="scale02.jpg" alt="scale02" style="width:100%">
+                            <p></p>
+                        </div>
+
+
+
 
                     </div>
 
